@@ -1,4 +1,4 @@
-from model.model_test import NeuralNetwork
+from model.model import NeuralNetwork
 
 
 class sequential:

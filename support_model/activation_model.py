@@ -17,4 +17,3 @@ def relu_derivative(x):
     return x > 0
 
 
-

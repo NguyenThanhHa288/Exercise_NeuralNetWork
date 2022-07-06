@@ -13,3 +13,10 @@ def accuracy(y, y_predict):
             y_predict[value] = 0
     accuracy_y = np.mean(y_predict == y) * 100
     return accuracy_y
+
+
+def add_bias(X):
+    m = len(X)
+    bias = np.ones((m, 1))
+    X = np.hstack((bias, X))
+    return X
