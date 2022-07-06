@@ -5,15 +5,14 @@ import pandas as pd
 from data.read_data import read_data, convert_data
 from model.layer_model import sequential
 
+"""
+Build model Logistic Regression to Data train
+"""
+
 data = pd.read_csv("../data/train_record.csv").values
 
 x_train, y_train = read_data(data)
 x_train = convert_data(x_train, 3)
-
-data_test = pd.read_csv("../data/test_record.csv").values
-
-x_test, y_test = read_data(data_test)
-x_test = convert_data(x_test, 3)
 
 model = sequential()
 

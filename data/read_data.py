@@ -2,6 +2,10 @@ import numpy as np
 
 from switch.optimal_data import add_row, normalize
 
+"""
+Convert Data to training model
+"""
+
 
 def read_data(data: np):
     n, d = data.shape

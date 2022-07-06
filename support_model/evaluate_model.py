@@ -1,6 +1,10 @@
 import numpy as np
 
 
+"""
+Function to evaluate model 
+"""
+
 def calculate_loss(y, y_predict):
     return -(np.sum(y * np.log(y_predict) + (1 - y) * np.log(1 - y_predict)))
 
@@ -14,9 +18,3 @@ def accuracy(y, y_predict):
     accuracy_y = np.mean(y_predict == y) * 100
     return accuracy_y
 
-
-def add_bias(X):
-    m = len(X)
-    bias = np.ones((m, 1))
-    X = np.hstack((bias, X))
-    return X

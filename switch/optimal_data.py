@@ -1,5 +1,9 @@
 import numpy as np
 
+"""
+Data processing for convenience
+"""
+
 
 def normalize(x):
     Test = x[:, 1:]

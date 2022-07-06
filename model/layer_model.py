@@ -2,6 +2,11 @@ from model.model import NeuralNetwork
 
 
 class sequential:
+
+    """
+    Layer of model Logistic Regression
+    """
+
     model = NeuralNetwork()
 
     def __init__(self):
@@ -21,10 +26,12 @@ class sequential:
     def fit(self, learning_rate, epochs, verbose):
         sequential.model.fit(self.x_train, self.y_train, learning_rate, epochs, verbose)
 
-    def evaluate_layer(self, x_test, y_test):
+    @staticmethod
+    def evaluate_layer(x_test, y_test):
         calculate_para, accuracy_para = sequential.model.predict_test(x_test, y_test)
         return calculate_para, accuracy_para
 
-    def predict_layer(self, x):
+    @staticmethod
+    def predict_layer(x):
         result = sequential.model.predict_object(x)
         return result

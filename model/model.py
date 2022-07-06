@@ -1,12 +1,16 @@
 import numpy as np
-from sklearn.model_selection import KFold
 
 from support_model.activation_model import sigmoid, sigmoid_derivative, relu, relu_derivative
-from support_model.evaluate_model import calculate_loss, accuracy, add_bias
-from switch.optimal_data import normalize
+from support_model.evaluate_model import calculate_loss, accuracy
+from switch.optimal_data import normalize, add_bias
 
 
 class NeuralNetwork:
+
+    """
+    Model Logistic Regression
+    """
+
     def __init__(self):
         self.layers = []
         self.activation = []
@@ -40,8 +44,7 @@ class NeuralNetwork:
                 out = sigmoid(np.dot(out, self.w[count]) + self.b[count].T)
             else:
                 out = relu(np.dot(out, self.w[count]) + self.b[count].T)
-                out = add_bias(out)
-                out = normalize(out)
+                out = normalize(add_bias(out))
             z.append(out)
 
         y = y.reshape(-1, 1)
@@ -75,20 +78,11 @@ class NeuralNetwork:
         x = add_bias(x)
         self.layer_model()
 
-        acr_train = 0
-
-        # k_fold = KFold(n_splits=8, shuffle=True)
-
-        # for train_ids, val_ids in k_fold.split(x, y):
-
         for epoch in range(0, epochs):
             self.fit_partial(x, y, learning_rate)
-
             if epoch % verbose == 0:
                 loss, acr_train = self.predict(x, y)
-
                 print("Epoch {}, loss {}, accuracy {}".format(epoch, loss, acr_train))
-
 
     def predict(self, x, y):
         for count in range(0, len(self.layers) - 1):
@@ -96,8 +90,8 @@ class NeuralNetwork:
                 x = sigmoid(np.dot(x, self.w[count]) + self.b[count].T)
             else:
                 x = relu(np.dot(x, self.w[count]) + self.b[count].T)
-                x = add_bias(x)
-                x = normalize(x)
+                x = normalize(add_bias(x))
+
         calculate_para = calculate_loss(y, x)
         accuracy_para = accuracy(y, x)
         return calculate_para, accuracy_para
@@ -109,8 +103,7 @@ class NeuralNetwork:
                 x = sigmoid(np.dot(x, self.w[count]) + self.b[count].T)
             else:
                 x = relu(np.dot(x, self.w[count]) + self.b[count].T)
-                x = add_bias(x)
-                x = normalize(x)
+                x = normalize(add_bias(x))
         calculate_para = calculate_loss(y, x)
         accuracy_para = accuracy(y, x)
         return calculate_para, accuracy_para
