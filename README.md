@@ -22,10 +22,10 @@ Change the activation function to consider.
 
 The results were only 78 percent accurate on the last train.
 
-##Conclusion
+#Conclusion
 Due to the lack of experience with this problem, the use of some methods to increase accuracy is limited, leading to the failure of the instructor's wishes.
 
-## Installation
+# Installation
 Clone the repo from GitHub and pull the project.
 
 Git clone https://github.com/NguyenThanhHa288/Exercise_NeuralNetWork
